@@ -34,7 +34,7 @@
 
 		// Operate on any Caldera Autoselect fields for populate_markets
 		var retrieved_markets = [];
-		function addMarketsToCaldera() {
+		function addMarketsToCaldera(popmarks) {
 			var new_markets = [];
 			retrieved_markets.forEach(function(market) {
 				new_markets.push(new Option(market, market, false, false));
