@@ -1,4 +1,8 @@
-.select2-container--default .select2-selection--multiple {
-	background: #f7f7f7;
+body .select2-container--default .select2-selection--multiple {
+	background-color: #f7f7f7;
 	border-radius: 0;
+}
+
+body .select2-search {
+	width: 100%;
 }
