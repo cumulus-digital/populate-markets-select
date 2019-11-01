@@ -11,7 +11,7 @@
 						populate_markets.each(function() {
 							var $select = $(this);
 							var original_options = $select.find('option').map(function() {
-								return $(this).attr('value');
+								return $(this).text();
 							});
 							$select.select2({
 								allowClear: true,
