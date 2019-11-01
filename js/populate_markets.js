@@ -18,7 +18,6 @@
 		var retrieved_markets = [];
 		function getMarkets(callback) {
 			if (retrieved_markets.length) {
-				console('already filled');
 				callback(retrieved_markets);
 			}
 			$.getJSON(
@@ -45,7 +44,6 @@
 			markets.forEach(function(market) {
 				new_markets.push(new Option(market, market, false, false));
 			});
-			console.log(new_markets, select);
 			select.append(new_markets).trigger('change');
 		}
 
