@@ -13,7 +13,7 @@
 function populate_markets_select_init_scripts() {
 	wp_enqueue_script(
 		'populate_markets_select_init_scripts',
-		plugins_url( 'populate_markets.js', __FILE__ ),
+		plugins_url( 'js/populate_markets.js', __FILE__ ),
 		array('jquery'), null, true
 	);
 }
