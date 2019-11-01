@@ -1,8 +1,10 @@
 body .select2-container--default .select2-selection--multiple {
 	background-color: #f7f7f7;
 	border-radius: 0;
+	padding: .5em;
 }
 
-body .select2-search {
-	width: 100%;
+body .select2-search,
+body .select2-search__field {
+	width: 100% !important;
 }
