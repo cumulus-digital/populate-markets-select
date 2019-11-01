@@ -2,9 +2,6 @@
 	$(function() {
 
 		// Operations for all Caldera Autoselect fields
-		var all_caldera_autoselects = $('.ccselect2-container');
-		if (all_caldera_autoselects.length) {
-
 			// Close select2 when Popup Maker closes
 			$('.pum').on('pumBeforeClose', function() {
 				var $this = jQuery(this);
@@ -14,11 +11,9 @@
 			// Close all autoselects if clicking anywhere else
 			$(document).on('click', function(e) {
 				if (e.target.className.indexOf('ccselect2') < 0) {
-					all_caldera_autoselects.select2('close');
+					$('.ccselect2-container').select2('close');
 				}
 			});
-
-		}
 
 		function getMarkets(callback) {
 			$.getJSON(
@@ -39,6 +34,7 @@
 
 		// Operate on any Caldera Autoselect fields for populate_markets
 		var caldera_autoselects = $('.populate_markets .ccselect2-container ~ select');
+		console.log('caldera found:', caldera_autoselects);
 		if (caldera_autoselects.length) {
 
 			// Retrieve and fill markets
