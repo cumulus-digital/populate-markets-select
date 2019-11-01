@@ -20,9 +20,11 @@
 				$(this).parents('.ccselect2-container').select2('open');
 			});
 			// Close on blur
+			/*
 			$(document).on('blur', '.ccselect2-input', function(e) {
 				$(this).parents('.ccselect2-container').select2('close');
 			});
+			*/
 
 		var retrieved_markets = [];
 		function getMarkets(callback) {
