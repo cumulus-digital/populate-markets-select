@@ -1,52 +1,72 @@
 (function($, window, undefined) {
 	$(function() {
 
-		/*
-		var retrieved_markets = [];
-		function getMarkets(callback) {
-			if (retrieved_markets.length) {
-				callback(retrieved_markets);
+		function handleSelects() {
+			var populate_markets = $('.populate_markets select, select.populate_markets');
+			if (populate_markets.length) {
+				$('body').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css"></link>');
+				$.getScript(
+					'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js',
+					function() {
+						populate_markets.each(function() {
+							var $select = $(this);
+							var original_options = $select.find('option').map(function() {
+								return $(this).attr('value');
+							});
+							$select.select2({
+								allowClear: true,
+								multiple: true,
+								closeOnSelect: false,
+								dropdownParent: $select.parents('form'),
+								placeholder: $select.attr('placeholder'),
+								width: '100%',
+								ajax: {
+									url: 'https://player.westwoodone.com/stations/stations.ashx',
+									dataType: 'json',
+									processResults: function(data) {
+										var markets = [];
+										data.forEach(function(station) {
+											var market = station.city + ', ' + station.state;
+											if ( ! markets.includes(market)) {
+												markets.push(market);
+											}
+										});
+										markets.sort();
+										
+										var ret = [];
+										original_options.each(function() {
+											ret.push({
+												id: this,
+												text: this
+											});
+										});
+
+										markets.forEach(function(market) {
+											ret.push({
+												id: market,
+												text: market
+											});
+										});
+
+										console.log(ret);
+										
+										return {
+											results: ret
+										};
+									}
+								}
+							});
+						});
+					}
+				);
 			}
-			$.getJSON(
-				"https://player.westwoodone.com/stations/stations.ashx",
-				function( data ) {
-					var markets = [];
-					data.forEach(function(station) {
-						var market = station.city + ', ' + station.state;
-						if ( ! markets.includes(market)) {
-							markets.push(market);
-						}
-					});
-					markets.sort();
-					retrieved_markets = markets;
-					callback(markets);
-				}
-			);
 		}
 
-		// Add markets to a given select
-		function addMarketsToSelect(markets, select) {
-			var select = $(select);
-			var new_markets = [];
-			markets.forEach(function(market) {
-				//new_markets.push(new Option(market, market, false, false));
-				new_markets.push($('<option data-calc-value="' + market + '" value="' + market + '">' + market + '</option>'));
-			});
-			select.append(new_markets).parents('.populate_markets').trigger('change');
-		}
+		// Handle ninja forms
+		$(document).on('nfFormReady', handleSelects);
 
-		// Handle existing selects
-		var populate_markets = $('.populate_markets select, select.populate_markets');
-		populate_markets.each(function() {
-			var select = $(this);
-			if ( ! select.data('markets-loading')) {
-				select.data('markets-loading', true);
-				getMarkets(function(markets) {
-					addMarketsToSelect(markets, select);
-				});
-			}
-		});
-		*/
+		// handle existing forms
+		handleSelects();
 
 	});
 })(jQuery, window.self);
