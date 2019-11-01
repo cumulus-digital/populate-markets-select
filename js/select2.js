@@ -39,6 +39,8 @@
 								text: market
 							});
 						});
+
+						console.log(ret);
 						
 						return {
 							results: ret
