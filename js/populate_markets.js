@@ -53,9 +53,10 @@
 			var select = $(select);
 			var new_markets = [];
 			markets.forEach(function(market) {
-				new_markets.push(new Option(market, market, false, false));
+				//new_markets.push(new Option(market, market, false, false));
+				new_markets.push($('<option data-calc-value="' + market + '" value="' + market + '">' + market + '</option>'));
 			});
-			select.append(new_markets).trigger('change');
+			select.append(new_markets).parents('.populate_markets').trigger('change');
 		}
 
 		// Handle any future forms
