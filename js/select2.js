@@ -28,10 +28,10 @@
 						markets.sort();
 						
 						var ret = [];
-						original_options.forEach(function(opt) {
+						original_options.each(function() {
 							ret.push({
-								id: opt,
-								text: opt
+								id: this,
+								text: this
 							});
 						});
 
