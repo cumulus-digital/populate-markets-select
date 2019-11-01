@@ -4,7 +4,10 @@
 		var populate_markets = $('select.populate_markets');
 		populate_markets.each(function() {
 			var $select = $(this);
-			var original_options = $select.find('option');
+			var original_options = $select.find('option').map(function() {
+				return $(this).attr('value');
+			});
+
 			$select.select2({
 				allowClear: true,
 				multiple: true,
@@ -25,11 +28,10 @@
 						markets.sort();
 						
 						var ret = [];
-						original_options.each(function(opt) {
-							var $opt = $(opt);
+						original_options.forEach(function(opt) {
 							ret.push({
-								id: $opt.attr('value'),
-								text: $opt.text()
+								id: opt,
+								text: opt
 							});
 						});
 
