@@ -20,7 +20,7 @@
 								dropdownParent: $select.parents('form'),
 								placeholder: {
 									id: '',
-									text: $select.attr('placeholder')
+									text: 'Select one or more markets'
 								},
 								width: '100%',
 								ajax: {
