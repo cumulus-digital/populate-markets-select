@@ -1,0 +1,13 @@
+.wpcf7 {
+	font-size: 1rem;
+}
+
+.wpcf7 input[type='text'],
+.wpcf7 input[type='email'],
+.wpcf7 input[type='phone'],
+.wpcf7 input[type='url'] {
+	width: 100%;
+	font-size: 1.25em;
+	border-radius: .25em;
+	
+}

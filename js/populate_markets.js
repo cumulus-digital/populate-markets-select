@@ -1,31 +1,6 @@
 (function($, window, undefined) {
 	$(function() {
 
-		// Operations for all Caldera Autoselect fields
-			// Close select2 when Popup Maker closes
-			$('.pum').on('pumBeforeClose', function() {
-				var $this = jQuery(this);
-				$this.find('.ccselect2-container ~ select').select2('close');
-			});
-
-			// Close all autoselects if clicking anywhere else
-			$(document).on('click', function(e) {
-				if (e.target.className.indexOf('ccselect2') < 0) {
-					$('.ccselect2-container').select2('close');
-				}
-			});
-
-			// Open autoselect on focus
-			$(document).on('focus', '.ccselect2-input', function(e) {
-				$(this).parents('.ccselect2-container').select2('open');
-			});
-			// Close on blur
-			/*
-			$(document).on('blur', '.ccselect2-input', function(e) {
-				$(this).parents('.ccselect2-container').select2('close');
-			});
-			*/
-
 		var retrieved_markets = [];
 		function getMarkets(callback) {
 			if (retrieved_markets.length) {
@@ -48,8 +23,8 @@
 			);
 		}
 
-		// Operate on any Caldera Autoselect fields for populate_markets
-		function addMarketsToCaldera(markets, select) {
+		// Add markets to a given select
+		function addMarketsToSelect(markets, select) {
 			var select = $(select);
 			var new_markets = [];
 			markets.forEach(function(market) {
@@ -59,29 +34,14 @@
 			select.append(new_markets).parents('.populate_markets').trigger('change');
 		}
 
-		// Handle any future forms
-		$(document).on('cf.form.init', function(e, data) {
-			var $this = $(this);
-			var popmarks = $this.find('.populate_markets select');
-			popmarks.each(function(select) {
-				var select = $(this);
-				if ( ! select.data('markets-loading')) {
-					select.data('markets-loading', true);
-					getMarkets(function(markets) {
-						addMarketsToCaldera(markets, select);
-					});
-				}
-			});
-		});
-
 		// Handle existing selects
-		var populate_markets = $('.populate_markets select');
+		var populate_markets = $('.populate_markets select, select.populate_markets');
 		populate_markets.each(function() {
 			var select = $(this);
 			if ( ! select.data('markets-loading')) {
 				select.data('markets-loading', true);
 				getMarkets(function(markets) {
-					addMarketsToCaldera(markets, select);
+					addMarketsToSelect(markets, select);
 				});
 			}
 		});
