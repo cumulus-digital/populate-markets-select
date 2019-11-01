@@ -18,7 +18,10 @@
 								multiple: true,
 								closeOnSelect: false,
 								dropdownParent: $select.parents('form'),
-								placeholder: $select.attr('placeholder'),
+								placeholder: {
+									id: '',
+									text: $select.attr('placeholder')
+								},
 								width: '100%',
 								ajax: {
 									url: 'https://player.westwoodone.com/stations/stations.ashx',
