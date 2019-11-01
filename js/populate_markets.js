@@ -44,9 +44,11 @@
 			markets.forEach(function(market) {
 				new_markets.push(new Option(market, market, false, false));
 			});
+			var existing = select.html();
 			var optgroup = $('<optgroup/>');
 			optgroup.append(new_markets);
-			select.append(optgroup).trigger('change');
+			select.html('<optgroup>' + existing + '</optgroup>').append(new_markets).trigger('change');
+			//select.append(new_markets).trigger('change');
 		}
 
 		// Handle any future forms
@@ -55,9 +57,12 @@
 			var popmarks = $this.find('.populate_markets select');
 			popmarks.each(function(select) {
 				var select = $(this);
-				getMarkets(function(markets) {
-					addMarketsToCaldera(markets, select);
-				});
+				if ( ! select.data('markets-loading')) {
+					select.data('markets-loading', true);
+					getMarkets(function(markets) {
+						addMarketsToCaldera(markets, select);
+					});
+				}
 			});
 		});
 
@@ -65,9 +70,12 @@
 		var populate_markets = $('.populate_markets select');
 		populate_markets.each(function() {
 			var select = $(this);
-			getMarkets(function(markets) {
-				addMarketsToCaldera(markets, select);
-			});
+			if ( ! select.data('markets-loading')) {
+				select.data('markets-loading', true);
+				getMarkets(function(markets) {
+					addMarketsToCaldera(markets, select);
+				});
+			}
 		});
 
 	});
