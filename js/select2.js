@@ -13,6 +13,7 @@
 				multiple: true,
 				closeOnSelect: false,
 				dropdownParent: $select.parents('.wpcf7'),
+				placeholder: $select.attr('placeholder'),
 				width: '100%',
 				ajax: {
 					url: 'https://player.westwoodone.com/stations/stations.ashx',
@@ -57,7 +58,8 @@
 			$select.select2({
 				multiple: $select.attr('multiple') ? true : false,
 				width: '100%',
-				dropdownParent: $select.parents('.wpcf7')
+				dropdownParent: $select.parents('.wpcf7'),
+				placeholder: $select.attr('placeholder')
 			});
 		});
 

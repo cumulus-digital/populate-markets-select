@@ -3,6 +3,7 @@
 }
 
 .wpcf7-form-control-wrap {
+	display: block;
 	margin-top: .25em;
 }
 
@@ -24,5 +25,6 @@
 
 .wpcf7 input[type='submit'] {
 	background: rgba( 30, 115, 190, 1.00 );
-	font-size: 1.5em;
+	color: #fff;
+	padding: .5em .75em;
 }
