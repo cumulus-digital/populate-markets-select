@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/cumulus-digital/populate-markets-select
  * Description: Auto-fill a select field with class name "populate_markets" from the station finder. Also adds styles and scripts for Contact Form 7.
  * Author: vena
- * Version: 1.0.27
+ * Version: 1.0.28
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: cumulus-digital/populate-markets-select
@@ -30,7 +30,7 @@ function populate_markets_select_init_scripts() {
 			array('jquery', 'populate_markets_select_init_scripts'), null, true
 		);
 		wp_enqueue_script(
-			'populate_markets_select_init_scripts',
+			'populate_markets_select_select2_localscripts',
 			plugins_url( 'js/select2.js', __FILE__ ),
 			array('jquery', 'populate_markets_select_select2_scripts'), null, true
 		);

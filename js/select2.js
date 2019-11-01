@@ -1,7 +1,7 @@
 (function($, window, undefined) {
 	$(function() {
 
-		$('.populate_markets').select2({
+		$('select.populate_markets').select2({
 			allowClear: true,
 			multiple: true,
 			closeOnSelect: false,
