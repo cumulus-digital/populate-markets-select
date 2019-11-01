@@ -33,23 +33,26 @@
 		}
 
 		// Operate on any Caldera Autoselect fields for populate_markets
-		var caldera_autoselects = $('.populate_markets .ccselect2-container ~ select');
-		console.log('caldera found:', caldera_autoselects);
-		if (caldera_autoselects.length) {
-
-			// Retrieve and fill markets
-			getMarkets(function(markets) {
-				var new_markets = []
-				markets.forEach(function(market) {
-					new_markets.push(new Option(market, market, false, false));
-				});
-				caldera_autoselects.each(function() {
-					var $select = $(this);
-					$select.append(new_markets).trigger('change');
-				});
-			})
-
+		var retrieved_markets = [];
+		function addMarketsToCaldera() {
+			var new_markets = [];
+			retrieved_markets.forEach(function(market) {
+				new_markets.push(new Option(market, market, false, false));
+			});
+			popmarks.append(new_markets).trigger('change');
 		}
+		$(document).on('cf.form.init', function(e, data) {
+			var $this = $(this);
+			var popmarks = $this.find('.populate_markets select');
+			if ( ! retrieved_markets.length) {
+				getMarkets(function(markets) {
+					retrieved_markets = markets;
+					addMarketsToCaldera(popmarks);
+				});
+				return;
+			}
+			addMarketsToCaldera(popmarks);
+		});
 
 	});
 })(jQuery, window.self);
