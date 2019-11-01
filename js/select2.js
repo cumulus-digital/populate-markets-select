@@ -22,8 +22,15 @@
 							}
 						});
 						markets.sort();
+						var ret = [];
+						markets.forEach(function(market) {
+							ret.push({
+								id: market,
+								text: market
+							});
+						});
 						return {
-							results: markets
+							results: ret
 						};
 					}
 				}
@@ -34,7 +41,8 @@
 			var $select = $(this);
 			$select.select2({
 				multiple: $select.attr('multiple') ? true : false,
-				width: '100%'
+				width: '100%',
+				dropdownParent: $select.parents('.wpcf7')
 			});
 		});
 
