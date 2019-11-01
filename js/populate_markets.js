@@ -15,7 +15,12 @@
 				}
 			});
 
+		var retrieved_markets = [];
 		function getMarkets(callback) {
+			if (retrieved_markets.length) {
+				console('already filled');
+				callback(retrieved_markets);
+			}
 			$.getJSON(
 				"https://player.westwoodone.com/stations/stations.ashx",
 				function( data ) {
@@ -27,31 +32,42 @@
 						}
 					});
 					markets.sort();
+					retrieved_markets = markets;
 					callback(markets);
 				}
 			);
 		}
 
 		// Operate on any Caldera Autoselect fields for populate_markets
-		var retrieved_markets = [];
-		function addMarketsToCaldera(popmarks) {
+		function addMarketsToCaldera(markets, select) {
+			var select = $(select);
 			var new_markets = [];
-			retrieved_markets.forEach(function(market) {
+			markets.forEach(function(market) {
 				new_markets.push(new Option(market, market, false, false));
 			});
-			popmarks.append(new_markets).trigger('change');
+			console.log(new_markets, select);
+			select.append(new_markets).trigger('change');
 		}
+
+		// Handle any future forms
 		$(document).on('cf.form.init', function(e, data) {
 			var $this = $(this);
 			var popmarks = $this.find('.populate_markets select');
-			if ( ! retrieved_markets.length) {
+			popmarks.each(function(select) {
+				var select = $(this);
 				getMarkets(function(markets) {
-					retrieved_markets = markets;
-					addMarketsToCaldera(popmarks);
+					addMarketsToCaldera(markets, select);
 				});
-				return;
-			}
-			addMarketsToCaldera(popmarks);
+			});
+		});
+
+		// Handle existing selects
+		var populate_markets = $('.populate_markets select');
+		populate_markets.each(function() {
+			var select = $(this);
+			getMarkets(function(markets) {
+				addMarketsToCaldera(markets, select);
+			});
 		});
 
 	});
