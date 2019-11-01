@@ -44,11 +44,7 @@
 			markets.forEach(function(market) {
 				new_markets.push(new Option(market, market, false, false));
 			});
-			var existing = select.html();
-			var optgroup = $('<optgroup/>');
-			optgroup.append(new_markets);
-			select.html('<optgroup>' + existing + '</optgroup>').append(new_markets).trigger('change');
-			//select.append(new_markets).trigger('change');
+			select.append(new_markets).trigger('change');
 		}
 
 		// Handle any future forms

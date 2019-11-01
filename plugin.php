@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/cumulus-digital/populate-markets-select
  * Description: With Caldera Forms and Popup Maker, allow a field with populate_markets class to fetch station markets from the station finder.
  * Author: vena
- * Version: 1.0.12
+ * Version: 1.0.13
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: cumulus-digital/populate-markets-select
