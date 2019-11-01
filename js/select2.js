@@ -26,9 +26,10 @@
 						
 						var ret = [];
 						original_options.each(function(opt) {
+							var $opt = $(opt);
 							ret.push({
-								id: opt.value,
-								text: opt.value
+								id: $opt.attr('value'),
+								text: $opt.text()
 							});
 						});
 
