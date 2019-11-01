@@ -1,6 +1,7 @@
 (function($, window, undefined) {
 	$(function() {
 
+		/*
 		var retrieved_markets = [];
 		function getMarkets(callback) {
 			if (retrieved_markets.length) {
@@ -45,6 +46,7 @@
 				});
 			}
 		});
+		*/
 
 	});
 })(jQuery, window.self);

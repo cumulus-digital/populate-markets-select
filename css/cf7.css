@@ -5,9 +5,18 @@
 .wpcf7 input[type='text'],
 .wpcf7 input[type='email'],
 .wpcf7 input[type='phone'],
-.wpcf7 input[type='url'] {
+.wpcf7 input[type='url']
+.wpcf7 input[type='submit'],
+.wpcf7 textarea,
+.wpcf7 button {
 	width: 100%;
 	font-size: 1.25em;
-	border-radius: .25em;
-	
+	border: 1px solid #888;
+	border-radius: .15em;
+	padding: .25em .5em;
+}
+
+.wpcf7 input[type='submit'] {
+	background: rgba( 30, 115, 190, 1.00 );
+	font-size: 1.5em;
 }
