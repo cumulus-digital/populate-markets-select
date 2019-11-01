@@ -16,11 +16,11 @@
 			});
 
 			// Open autoselect on focus
-			$('.ccselect2-input').on('focus', function(e) {
+			$(document).on('focus', '.ccselect2-input', function(e) {
 				$(this).parents('.ccselect2-container').select2('open');
 			});
 			// Close on blur
-			$('.ccselect2-input').on('blur', function(e) {
+			$(document).on('blur', '.ccselect2-input', function(e) {
 				$(this).parents('.ccselect2-container').select2('close');
 			});
 
