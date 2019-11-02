@@ -37,6 +37,7 @@
 									return new Option(market, market, false, false);
 								});
 								$select.append(markets);
+								/*
 								$select.select2({
 									allowClear: true,
 									multiple: true,
@@ -48,6 +49,7 @@
 									},
 									width: '100%'
 								});
+								*/
 							})
 						});
 					}
