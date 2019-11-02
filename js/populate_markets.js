@@ -1,6 +1,14 @@
 (function($, window, undefined) {
 	$(function() {
 
+		if ($.fn.select2) {
+			$.fn.select2.defaults.set('width', '100%');
+			$.fn.select2.defaults.set(
+				'dropdownParent',
+				this.parentNode
+			);
+		}
+
 		var isMobile = false;
 		var populate_markets = $('.populate_markets select, select.populate_markets');
 		var got_markets;
