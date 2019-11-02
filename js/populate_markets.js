@@ -13,6 +13,9 @@
 							var original_options = $select.find('option').map(function() {
 								return $(this).text();
 							});
+							$select.on('select2:change', function() {
+								$select.trigger('change');
+							});
 							$select.select2({
 								allowClear: true,
 								multiple: true,
@@ -49,10 +52,9 @@
 												id: market,
 												text: market
 											});
+											$select.append(new Option(market, market, false, false));
 										});
-
-										console.log(ret);
-										
+										$select.trigger('change');
 										return {
 											results: ret
 										};
