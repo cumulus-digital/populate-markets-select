@@ -2,10 +2,13 @@
 	$(function() {
 
 		if ($.fn.select2) {
+
 			$.fn.select2.defaults.set('width', '100%');
+
+			// Dropdown parent should either be a popup or body
 			$.fn.select2.defaults.set(
-				'dropdownParent',
-				this.parentNode
+				'dropdownCss',
+				{ zIndex: 999999 }
 			);
 		}
 
