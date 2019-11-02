@@ -4,6 +4,12 @@ body .select2-search__field {
 }
 body .select2-search__field[placeholder] { text-overflow: ellipsis; }
 body .select2-search__field:-moz-placeholder { text-overflow: ellipsis; }
+body .select2-container--default .select2-results__group {
+	font-size: 0.8em;
+	font-weight: normal;
+	opacity: 0.5;
+	padding-left: 0;
+}
 
 /* Remove box shadow from Fluent Forms success box */
 .pum-content .ff-message-success {
