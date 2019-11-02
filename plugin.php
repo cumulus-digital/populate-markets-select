@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Populate Markets Select
  * Plugin URI: https://github.com/cumulus-digital/populate-markets-select
- * Description: Auto-fill a select field with class name "populate_markets" from the station finder. Works with standard select inputs and Ninja Forms.
+ * Description: Auto-fill a select field with class name "populate_markets" from the station finder.
  * Author: vena
- * Version: 1.0.48
+ * Version: 1.0.50
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * GitHub Plugin URI: cumulus-digital/populate-markets-select
