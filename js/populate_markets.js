@@ -37,6 +37,7 @@
 									return new Option(market, market, false, false);
 								});
 								$select.append(markets);
+								$select.trigger('change');
 								/*
 								$select.select2({
 									allowClear: true,
