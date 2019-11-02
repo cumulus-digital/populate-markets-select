@@ -6,7 +6,9 @@
 			var fluentform = $(this).find('.fluentform');
 			fluentform.each(function() {
 				var $this = $(this);
-				$this.find('form').show();
+				$this.find('form').show().each(function() {
+					this.reset();
+				});
 				$this.find('.ff-message-success').hide();
 			});
 		});
