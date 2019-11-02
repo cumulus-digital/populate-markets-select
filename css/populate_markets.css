@@ -1,3 +1,10 @@
+/* Make initial input class show all its text */
+body .select2-search__field {
+	width: auto !important;
+}
+body .select2-search__field[placeholder] { text-overflow: ellipsis; }
+body .select2-search__field:-moz-placeholder { text-overflow: ellipsis; }
+
 /* Remove box shadow from Fluent Forms success box */
 .pum-content .ff-message-success {
 	box-shadow: none;

@@ -1,6 +1,16 @@
 (function($, window, undefined) {
 	$(function() {
 
+		// Popup Maker forms need to be reset on open
+		$('.pum').on('pumBeforeOpen', function() {
+			var fluentform = $(this).find('.fluentform');
+			fluentform.each(function() {
+				var $this = $(this);
+				$this.find('form').show();
+				$this.find('.ff-message-success').hide();
+			});
+		});
+
 		function handleSelects() {
 			var populate_markets = $('.populate_markets select, select.populate_markets');
 			if (populate_markets.length) {
@@ -23,7 +33,7 @@
 								dropdownParent: $select.parents('form'),
 								placeholder: {
 									id: '',
-									text: 'Select one or more markets'
+									text: 'Select one or more'
 								},
 								width: '100%',
 								ajax: {
